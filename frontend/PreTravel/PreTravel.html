@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tripflow - Pre-Travel</title>
+  <link rel="stylesheet" href="PreTravel.css" />
+</head>
+<body>
+  <header>
+    <h1>Pre-Travel Checker</h1>
+    <p>Get visa, safety, and regulation info before you go</p>
+  </header>
+
+  <main>
+    <section class="search-box">
+      <!-- FROM input -->
+      <div class="form-item autocomplete">
+        <label for="from">From:</label>
+        <input type="text" id="from" placeholder="e.g. Sweden" autocomplete="off" />
+        <div id="autocomplete-from" class="autocomplete-items"></div>
+      </div>
+
+      <!-- TO input -->
+      <div class="form-item autocomplete">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" placeholder="e.g. Japan" autocomplete="off" />
+        <div id="autocomplete-destination" class="autocomplete-items"></div>
+      </div>
+
+      <!-- DROPDOWN -->
+      <div class="dropdown">
+        <label for="dropdown">Info Type:</label>
+        <button onclick="toggleDropdown()" class="dropbtn">Select</button>
+        <div id="dropdown-content" class="dropdown-content">
+          <label><input type="radio" name="info-type" value="visa" /> Visa & Travel Info</label>
+          <label><input type="radio" name="info-type" value="health" /> Health & Vaccines</label>
+          <label><input type="radio" name="info-type" value="safety" /> Safety & Laws</label>
+          <label><input type="radio" name="info-type" value="weather" /> Weather & Seasons</label>
+          <label><input type="radio" name="info-type" value="essentials" /> Essentials</label>
+        </div>
+      </div>
+
+      <!-- SEARCH BUTTON -->
+      <div class="form-item">
+        <button class="search-btn" onclick="handleSearch()">Search</button>
+      </div>
+
+      <div id="result" class="result-box"></div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Tripflow</p>
+  </footer>
+  <script src="../script.js"></script>

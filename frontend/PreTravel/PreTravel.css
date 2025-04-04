@@ -1,0 +1,166 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #F9F9F6; /* Luxury ivory */
+    color: #222222; /* Charcoal text */
+  }
+  
+  header {
+    background-color: #1A1A40; /* Deep Blue */
+    color: #D4AF37; /* Gold text */
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  
+  .search-box {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .search-input,
+  .dropdown,
+  .search-btn-wrapper {
+    flex: 1;
+    min-width: 180px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    height: 42px; /* ← Control the height */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  /* Dropdown styling */
+  .dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropbtn {
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    background-color: #fddb75; /* Gold */
+    border: none;
+    border-radius: 5px;
+    color: #1A1A40; /* Deep Blue text */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropbtn:hover {
+    background-color: #c39c2f;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-content label {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  /* Align search button to bottom */
+  .search-btn-wrapper {
+    flex: 1;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .search-btn {
+    width: 100%;
+    height: 42px;
+    padding: 10px;
+    background-color: #1A1A40;
+    border: none;
+    color: #D4AF37;
+    font-size: 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .search-btn:hover {
+    background-color: #000022;
+  }
+  
+  footer {
+    text-align: center;
+    background-color: #1A1A40;
+    color: #D4AF37;
+    padding: 20px;
+    margin-top: 60px;
+  }
+
+
+  .autocomplete {
+    position: relative;
+  }
+  
+  .autocomplete-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: white;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .autocomplete-items div:hover {
+    background-color: #f1f1f1;
+  }
+  

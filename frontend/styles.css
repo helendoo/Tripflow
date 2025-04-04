@@ -52,6 +52,7 @@ body {
     gap: 30px;
     margin-top: 0px;
     flex-wrap: wrap;
+    align-items: stretch;
   }
   
   .info-box {
@@ -66,6 +67,8 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
   }
   
   .title-bar {
@@ -88,4 +91,21 @@ body {
     padding: 80px;
     font-size: 0.95em;
   }
+
+  .box-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
   
+  .box-link p {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .box-link:hover .info-box {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
