@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather & Seasons | Tripflow</title>
+  <link rel="stylesheet" href="Weather.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <!-- Sidebar Menu -->
+  <div id="sidebar" class="sidebar">
+    <a href="../PreTravel.html">Pre-Travel Home</a>
+    <a href="../PreTravel.html" onclick="navigateTo('visa')">Visa & Travel Info</a>
+    <a href="../PreTravel.html" onclick="navigateTo('health')">Health & Vaccines</a>
+    <a href="../PreTravel.html" onclick="navigateTo('safety')">Safety & Laws</a>
+    <a href="Weather.html">Weather & Seasons</a>
+    <a href="../PreTravel.html" onclick="navigateTo('essentials')">Essentials</a>
+  </div>
+
+
+  <header class="lux-header">
+    <h1>Weather & Seasons</h1>
+  </header>
+
+  <main class="weather-container">
+    <section class="weather-card">
+      <h2>🌤 Current Weather</h2>
+      <p id="weather-description">Loading...</p>
+    </section>
+
+    <section class="weather-card">
+      <h2>📅 7-Day Forecast</h2>
+      <div id="forecast">Coming soon...</div>
+    </section>
+
+    <section class="weather-card">
+      <h2>🗺 Weather by Region</h2>
+      <p>Different regions of your destination may have different weather patterns.</p>
+    </section>
+
+    <section class="weather-card">
+      <h2>✨ Best Time to Go</h2>
+      <p>Looking to relax, explore or party? Find the best season for your vibe.</p>
+    </section>
+  </main>
+
+  <footer class="lux-footer">
+    <p>&copy; 2025 Tripflow</p>
+  </footer>
+
+  <script src="Weather.js"></script>
+</body>
+</html>

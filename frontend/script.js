@@ -111,3 +111,37 @@ function toggleDropdown() {
         alert("Error connecting to backend.");
       });
   }
+
+
+  function handleSearch() {
+    const infoType = document.querySelector('input[name="info-type"]:checked');
+    const from = document.getElementById('from').value;
+    const destination = document.getElementById('destination').value;
+  
+    if (!infoType) {
+      alert("Please select an info type.");
+      return;
+    }
+  
+    // Redirect to the correct page based on selected option
+    switch (infoType.value) {
+      case 'weather':
+        window.location.href = 'Weather/Weather.html';// Adjust path if needed
+        break;
+      case 'visa':
+        alert("Redirect to Visa page (not yet implemented)");
+        break;
+      case 'health':
+        alert("Redirect to Health & Vaccines page (not yet implemented)");
+        break;
+      case 'safety':
+        alert("Redirect to Safety & Laws page (not yet implemented)");
+        break;
+      case 'essentials':
+        alert("Redirect to Essentials page (not yet implemented)");
+        break;
+      default:
+        alert("Invalid option.");
+    }
+  }
+  
