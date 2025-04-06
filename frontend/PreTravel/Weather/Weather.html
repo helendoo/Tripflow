@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
   <!-- Sidebar Menu -->
@@ -16,35 +17,61 @@
     <a href="../PreTravel.html" onclick="navigateTo('visa')">Visa & Travel Info</a>
     <a href="../PreTravel.html" onclick="navigateTo('health')">Health & Vaccines</a>
     <a href="../PreTravel.html" onclick="navigateTo('safety')">Safety & Laws</a>
-    <a href="Weather.html">Weather & Seasons</a>
     <a href="../PreTravel.html" onclick="navigateTo('essentials')">Essentials</a>
   </div>
 
-
+ 
   <header class="lux-header">
     <h1>Weather & Seasons</h1>
   </header>
 
+  <nav class="top-menu">
+    <ul>
+      <li><a href="#current-weather">Current Weather</a></li>
+      <li><a href="#forecast">7-Day Weather</a></li>
+      <li><a href="#region-weather">By Region Weather</a></li>
+      <li><a href="#best-time">Best Time To Go</a></li>
+    </ul>
+  </nav>
+  
+
   <main class="weather-container">
-    <section class="weather-card">
+    
+    <section id="current-weather" class="weather-card">
       <h2>🌤 Current Weather</h2>
-      <p id="weather-description">Loading...</p>
+      <div class="city-switcher">
+        <label for="cityInput">Change city:</label>
+        <input type="text" id="cityInput" placeholder="e.g. Bangkok" />
+        <button onclick="changeCity()">Search</button>
+      </div>
+      <div id="weather-result">
+        <p>Loading...</p>
+      </div>
     </section>
-
-    <section class="weather-card">
+    
+    
+    <section id="forecast" class="weather-card">
       <h2>📅 7-Day Forecast</h2>
-      <div id="forecast">Coming soon...</div>
+      <p>Coming soon...</p>
     </section>
-
-    <section class="weather-card">
-      <h2>🗺 Weather by Region</h2>
-      <p>Different regions of your destination may have different weather patterns.</p>
+    
+    <section id="weather-by-region" class="weather-card region-section">
+      <h2>🌍 Weather by Region</h2>
+    
+      <div class="region-layout">
+        <!-- Map -->
+        <object id="countryMap" type="image/svg+xml" data="Maps/Thailand.svg"></object>
+    
+        <!-- Info cards -->
+        <div id="region-weather" class="region-info"></div>
+      </div>
     </section>
-
-    <section class="weather-card">
+    
+    <section id="best-time" class="weather-card">
       <h2>✨ Best Time to Go</h2>
-      <p>Looking to relax, explore or party? Find the best season for your vibe.</p>
+      <p>Content here...</p>
     </section>
+
   </main>
 
   <footer class="lux-footer">

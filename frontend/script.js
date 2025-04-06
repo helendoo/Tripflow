@@ -93,55 +93,41 @@ function toggleDropdown() {
     const from = document.getElementById("from").value;
     const destination = document.getElementById("destination").value;
     const infoType = document.querySelector('input[name="info-type"]:checked');
-
+  
     if (!from || !destination || !infoType) {
       alert("Please fill out all fields.");
       return;
     }
-
+  
     const query = `?from=${encodeURIComponent(from)}&to=${encodeURIComponent(destination)}&type=${infoType.value}`;
-
-    fetch(`http://127.0.0.1:5000/api/info${query}`)
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("result").innerText = data.message;
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert("Error connecting to backend.");
-      });
-  }
-
-
-  function handleSearch() {
-    const infoType = document.querySelector('input[name="info-type"]:checked');
-    const from = document.getElementById('from').value;
-    const destination = document.getElementById('destination').value;
   
-    if (!infoType) {
-      alert("Please select an info type.");
-      return;
-    }
-  
-    // Redirect to the correct page based on selected option
     switch (infoType.value) {
       case 'weather':
-        window.location.href = 'Weather/Weather.html';// Adjust path if needed
+        localStorage.setItem("selectedDestination", destination);
+        window.location.href = 'Weather/Weather.html';
         break;
+  
       case 'visa':
-        alert("Redirect to Visa page (not yet implemented)");
-        break;
       case 'health':
-        alert("Redirect to Health & Vaccines page (not yet implemented)");
-        break;
       case 'safety':
-        alert("Redirect to Safety & Laws page (not yet implemented)");
-        break;
       case 'essentials':
-        alert("Redirect to Essentials page (not yet implemented)");
+        fetch(`http://127.0.0.1:5000/api/info${query}`)
+          .then(response => {
+            if (!response.ok) throw new Error("Failed to fetch info.");
+            return response.json();
+          })
+          .then(data => {
+            document.getElementById("result").innerText = data.message || "No info found.";
+          })
+          .catch(error => {
+            console.error("Error:", error);
+            alert("Error connecting to backend.");
+          });
         break;
+  
       default:
-        alert("Invalid option.");
+        alert("Invalid info type selected.");
     }
   }
+  
   
