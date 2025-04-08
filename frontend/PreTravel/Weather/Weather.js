@@ -6,82 +6,17 @@ function toggleMenu() {
   body.classList.toggle("sidebar-open");
 }
 
-/*weather by region*/
-
-const seasonalRegions = {
-  Thailand: {
-    North: { months: "Rainy season: May–Oct", color: "#3498db" },
-    SouthWest: { months: "Rainy season: May–Oct", color: "#2ecc71" },
-    SouthEast: { months: "Rainy season: Oct–Jan", color: "#f39c12" }
-  },
-  Italy: {
-    North: "Cold winters, snowy Alps. Best travel: May–Sep",
-    South: "Hot summers. Best travel: Mar–Jun & Sep–Nov",
-  },
-  Japan: {
-    Hokkaido: "Cool climate, snowy winters. Best: Jun–Sep",
-    TokyoRegion: "Rainy season: June–July. Best: Apr–May, Oct",
-    Okinawa: "Tropical. Rainy: May–June. Typhoons: Aug–Sep",
-  },
-  Sweden: {
-    North: "Snowy winters. Summer June–August.",
-    South: "Mild winters. Rain throughout year. Best May–Sep",
-  }  
-};
-
-
-function colorMapRegions(country) {
-  const regionData = regionSeasons[country];
-  const svgObject = document.getElementById("countryMap");
-
-  if (!regionData || !svgObject) return;
-
-  svgObject.addEventListener("load", () => {
-    const svgDoc = svgObject.contentDocument;
-
-    for (const region in regionData) {
-      const element = svgDoc.getElementById(region);
-      if (element) {
-        element.style.fill = regionData[region].color;
-        element.style.cursor = "pointer";
-      }
-    }
-  });
-}
-
-
-function displayRegionWeather(country) {
-  const data = regionSeasons[country];
-  const container = document.getElementById("region-weather");
-
-  if (!data) {
-    container.innerHTML = `<p>No regional data available for ${country}.</p>`;
-    return;
-  }
-
-  container.innerHTML = ""; // clear previous
-
-  for (const region in data) {
-    container.innerHTML += `
-      <div class="region-card">
-        <strong>${region}</strong><br>
-        <span>${data[region].months}</span>
-      </div>
-    `;
-  }
-}
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
-  const input = localStorage.getItem('selectedDestination') || "Bangkok";
-  const city = getCapitalCity(input);
+  const input = localStorage.getItem('selectedDestination') || "Thailand";
+  const city = getCapitalCity(input);    // For weather
+  const country = normalizeCountry(input); // For map + region info
+
   fetchWeather(city);
   fetchWeatherAPI(city);
-  displayRegionWeather(input);
-  colorMapRegions(input); 
+  displayRegionWeather(country);
+  loadCountryMap(country);
 });
+
 
 // 🔁 Fetch weather for a given city
 function fetchWeather(city) {
@@ -127,6 +62,22 @@ function getCapitalCity(country) {
   };
 
   return capitalMap[country] || country;
+}
+
+
+function normalizeCountry(input) {
+  const cityToCountry = {
+    Bangkok: "Thailand",
+    Tokyo: "Japan",
+    Rome: "Italy",
+    Paris: "France",
+    Stockholm: "Sweden",
+    Madrid: "Spain",
+    Berlin: "Germany"
+    // Add more as needed
+  };
+
+  return cityToCountry[input] || input;
 }
 
 // 🧭 Called when user searches for a new city manually
@@ -179,4 +130,143 @@ function displayForecast(data) {
     `;
   });
 }
+
+
+/*WEATHER OF REGION*/
+function colorMapRegions(country) {
+  const regionData = regionSeasons[country];
+  const svgDoc = document.querySelector("#countryMap"); // <-- direkt SVG, inte objekt
+
+  if (!regionData || !svgDoc) return;
+
+  for (const region in regionData) {
+    const element = svgDoc.getElementById(region);
+    if (element) {
+      element.style.fill = regionData[region].color || "#ccc";
+      element.style.cursor = "pointer";
+
+      element.addEventListener("click", () => {
+        showRegionPopup(region, regionData[region]);
+      });
+    }
+  }
+}
+
+
+
+
+function displayRegionWeather(country) {
+  const data = regionSeasons[country];
+  const container = document.getElementById("region-list");
+
+  if (!data || !container) return;
+
+  container.innerHTML = ""; // clear previous
+
+  for (const region in data) {
+    const item = document.createElement("li");
+    item.innerHTML = `
+      <strong>${region}</strong><br>
+      Rainy season: ${data[region].months}<br>
+      ${data[region].info.replace(/\n/g, "<br>")}
+    `;
+    container.appendChild(item);
+  }
+}
+
+function loadCountryMap(country) {
+  const mapPath = `Maps/${country}.svg`;
+  const mapContainer = document.getElementById("region-map");
+
+  if (!mapContainer) return;
+
+  fetch(mapPath)
+    .then(res => {
+      if (!res.ok) throw new Error(`SVG map for ${country} not found`);
+      return res.text();
+    })
+    .then(svg => {
+      mapContainer.innerHTML = svg;
+
+      // Vänta tills SVG har laddats in i DOM:en
+      const svgElement = mapContainer.querySelector("svg");
+      if (!svgElement) return;
+
+      svgElement.setAttribute("id", "countryMap"); // Lägg till ID för vidare användning
+      colorMapRegions(country); // Kör efter att SVG är tillagd
+    })
+    .catch(err => {
+      mapContainer.innerHTML = `<p style="color:red;">Map not available for ${country}</p>`;
+      console.error(err);
+    });
+}
+
+
+
+
+function showRegionPopup(regionName, regionData) {
+  const popup = document.getElementById("region-popup");
+  popup.innerHTML = `
+    <strong>${regionName}</strong><br>
+    ${regionData.months ? `<p><strong>Rainy Season:</strong> ${regionData.months}</p>` : ""}
+    ${regionData.info ? `<p>${regionData.info.replace(/\n/g, "<br>")}</p>` : ""}
+    <button onclick="hideRegionPopup()">Close</button>
+  `;
+
+  console.log("popup open")
+  popup.classList.remove("hidden");
+  popup.classList.add("visible");
+}
+
+function hideRegionPopup() {
+  const popup = document.getElementById("region-popup");
+  popup.classList.remove("visible");
+  popup.classList.add("hidden");
+}
+
+
+const regionSeasons = {
+  Thailand: {
+      North: {
+        months: "Rainy: May–Oct",
+        info: "Cool Season: Nov–Feb\nHot Season: Mar–Apr\nBest: Nov–Feb",
+        color: "#3498db"
+      },
+      Central: {
+        months: "Rainy: May–Oct",
+        info: "Hot and Humid: Mar–May\nBest: Nov–Feb",
+        color: "#7f8c8d"
+      },
+      Isaan: {
+        months: "Rainy: May–Oct",
+        info: "Dry and Cool: Nov–Feb\nHot Season: Mar–Apr\nBest: Nov–Feb",
+        color: "#e67e22"
+      },
+      East: {
+        months: "Rainy: May–Oct",
+        info: "Dry Season: Nov–Apr\nBest: Nov–Apr",
+        color: "#9b59b6"
+      },
+      South: {
+        months: "Rainy: May–Oct",
+        info: "Dry Season: Nov–Apr\nBest: Nov–Apr",
+        color: "#2ecc71"
+      }
+  },
+  Italy: {
+    North: { months: "Cold winters, snowy Alps. Best: May–Sep", color: "#8e44ad" },
+    South: { months: "Hot summers. Best: Mar–Jun & Sep–Nov", color: "#e67e22" }
+  },
+  Japan: {
+    Hokkaido: { months: "Cool, snowy winters. Best: Jun–Sep", color: "#1abc9c" },
+    TokyoRegion: { months: "Rainy: Jun–Jul. Best: Apr–May, Oct", color: "#3498db" },
+    Okinawa: { months: "Tropical. Rainy: May–Jun. Typhoons: Aug–Sep", color: "#e74c3c" }
+  },
+  Sweden: {
+    North: { months: "Snowy winters. Summer: Jun–Aug", color: "#2980b9" },
+    South: { months: "Mild winters. Rainy year-round. Best: May–Sep", color: "#27ae60" }
+  }
+};
+
+
 
