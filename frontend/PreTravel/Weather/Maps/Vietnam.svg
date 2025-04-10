@@ -13,9 +13,11 @@
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.48.5 r10040"
-   width="1516.75"
-   height="2529.375"
+   width="100%"
+   height="auto"
    version="1.0"
+   viewBox = "0 0 1516.75 2529.375"
+   preserveAspectRatio="xMidYMid meet"
    sodipodi:docname="Vietnam_Regions_Map.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <metadata
