@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = localStorage.getItem('selectedDestination') || "Thailand";
   const city = getCapitalCity(input);    // For weather
   const country = normalizeCountry(input); // For map + region info
-
   fetchWeather(city);
   fetchWeatherAPI(city);
   displayRegionWeather(country);
   loadCountryMap(country);
+  displayBestTime(city);
 });
 
 
@@ -86,8 +86,13 @@ function changeCity() {
   if (!newCity) return;
 
   localStorage.setItem("selectedDestination", newCity);
+  const country = normalizeCountry(newCity);
+
   fetchWeather(newCity);
   fetchWeatherAPI(newCity);
+  displayBestTime(newCity);
+  displayRegionWeather(country);
+  loadCountryMap(country);
 }
 
 /*WEATHER 7 DAYS FORECAST*/
@@ -151,8 +156,6 @@ function colorMapRegions(country) {
     }
   }
 }
-
-
 
 
 function displayRegionWeather(country) {
@@ -268,5 +271,50 @@ const regionSeasons = {
   }
 };
 
+function displayBestTime(city) {
+  const info = bestTimeInfo[city];
+  const country = normalizeCountry(city);
+  const box = document.getElementById("best-time-info");
 
+  if (!info || !box) return;
 
+  box.innerHTML = `
+  <div class="metrics-row">
+    <div class="metric-tile">
+      <span class="metric-icon">💰</span>
+      <strong>Affordability:</strong><br>${info.affordability}
+    </div>
+    <div class="metric-tile">
+      <span class="metric-icon">👥</span>
+      <strong>Crowd Level:</strong><br>${info.crowd}
+    </div>
+  </div>
+
+  <div class="expandable-section" onclick="toggleSection(this)">
+    <h4><span>🧭</span> Experience Highlights</h4>
+    <ul class="expandable-content">
+      ${info.experiences.map(e => `<li>✨ ${e}</li>`).join("")}
+    </ul>
+  </div>
+
+  <div class="expandable-section" onclick="toggleSection(this)">
+    <h4><span>🎉</span> Festival Events</h4>
+    <ul class="expandable-content">
+    ${(countryFestivalData[country] || []).map(f => `<li>🎭 ${f}</li>`).join("")}
+    </ul>
+  </div>
+`;
+}
+
+function toggleSection(section) {
+  section.classList.toggle("open");
+}
+
+document.addEventListener("scroll", () => {
+  document.querySelectorAll(".weather-card").forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      card.classList.add("visible");
+    }
+  });
+});
