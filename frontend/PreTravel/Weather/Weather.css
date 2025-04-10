@@ -102,6 +102,11 @@ section h2 {
     transition: margin-left 0.3s ease;
   }
 
+  body.sidebar-open .sidebar {
+    left: 0;
+  }
+
+
 /* TOP MENU */
 .top-menu {
   position: sticky;
@@ -164,6 +169,7 @@ section h2 {
 }
 
 .region-layout {
+  position: relative;
   display: flex;
   flex-direction: row-reverse; /* 👈 detta flyttar kartan till höger */
   justify-content: flex-start;
@@ -224,21 +230,19 @@ section h2 {
 }
 
 .region-popup {
-  position: fixed;
-  top: 200px;
-  right: 200px;
-  width: 500px; /* ⬅️ gör bredare */
-  min-height: 250px; /* ⬅️ höjd vid behov */
-  background-color: #1b1b2f;
+  position: absolute;
+  top: 1325px;
+  right: 250px;
+  width: 400px; /* Fixed width */
+  height: 300px; /* Fixed height */
+  background: #1b1b2f;
   color: #fff;
-  padding: 1.2rem;
+  padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  overflow-y: auto; /* Scroll inside if needed */
   transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: translateY(-20px);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 999;
+  z-index: 2; /* Lower than fixed headers/menus */
 }
 
 .region-popup.visible {
@@ -251,4 +255,38 @@ section h2 {
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
+}
+
+
+.region-popup::-webkit-scrollbar {
+  width: 8px;
+}
+.region-popup::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+.region-popup::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+
+/* THE INSTRUCTION BOX FOR WEATHER BY REGION*/
+
+.instruction-box {
+  position: absolute;
+  top: 1300px;
+  right: 400px;
+  background: #1b1b2f;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  max-width: 300px;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }

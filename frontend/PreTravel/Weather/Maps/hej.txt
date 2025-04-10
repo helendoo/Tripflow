@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000">
+
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="100%"
+  height="auto"
+  preserveAspectRatio="xMidYMid meet"
+  viewBox="0 0 1200 1000">
+
+
+<svg width="1200" height="800">
+<svg
+  width="100%"
+  height="auto"
+  viewBox="0 0 1200 800"
+  preserveAspectRatio="xMidYMid meet">

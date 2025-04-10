@@ -1,3 +1,5 @@
+import { regionSeasons } from "./Data/regionDetails.js";
+
 function toggleMenu() {
   const menu = document.getElementById("sidebar");
   const body = document.body;
@@ -202,18 +204,18 @@ function loadCountryMap(country) {
 }
 
 
-
-
 function showRegionPopup(regionName, regionData) {
+  const instruction = document.getElementById("region-instruction");
+  if (instruction) instruction.style.display = "none";
+
+  
   const popup = document.getElementById("region-popup");
   popup.innerHTML = `
     <strong>${regionName}</strong><br>
-    ${regionData.months ? `<p><strong>Rainy Season:</strong> ${regionData.months}</p>` : ""}
-    ${regionData.info ? `<p>${regionData.info.replace(/\n/g, "<br>")}</p>` : ""}
+    ${regionData.months ? `<p><strong>Weather Season:</strong><br> ${regionData.months}</p>` : ""}
+    ${regionData.info ? `<p><strong>Other Info:</strong><br>${regionData.info.replace(/\n/g, "<br>")}</p>` : ""}
     <button onclick="hideRegionPopup()">Close</button>
   `;
-
-  console.log("popup open")
   popup.classList.remove("hidden");
   popup.classList.add("visible");
 }
@@ -224,49 +226,10 @@ function hideRegionPopup() {
   popup.classList.add("hidden");
 }
 
+/*So HTML can fetch from these function*/
 
-const regionSeasons = {
-  Thailand: {
-      North: {
-        months: "Rainy: May–Oct",
-        info: "Cool Season: Nov–Feb\nHot Season: Mar–Apr\nBest: Nov–Feb",
-        color: "#3498db"
-      },
-      Central: {
-        months: "Rainy: May–Oct",
-        info: "Hot and Humid: Mar–May\nBest: Nov–Feb",
-        color: "#7f8c8d"
-      },
-      Isaan: {
-        months: "Rainy: May–Oct",
-        info: "Dry and Cool: Nov–Feb\nHot Season: Mar–Apr\nBest: Nov–Feb",
-        color: "#e67e22"
-      },
-      East: {
-        months: "Rainy: May–Oct",
-        info: "Dry Season: Nov–Apr\nBest: Nov–Apr",
-        color: "#9b59b6"
-      },
-      South: {
-        months: "Rainy: May–Oct",
-        info: "Dry Season: Nov–Apr\nBest: Nov–Apr",
-        color: "#2ecc71"
-      }
-  },
-  Italy: {
-    North: { months: "Cold winters, snowy Alps. Best: May–Sep", color: "#8e44ad" },
-    South: { months: "Hot summers. Best: Mar–Jun & Sep–Nov", color: "#e67e22" }
-  },
-  Japan: {
-    Hokkaido: { months: "Cool, snowy winters. Best: Jun–Sep", color: "#1abc9c" },
-    TokyoRegion: { months: "Rainy: Jun–Jul. Best: Apr–May, Oct", color: "#3498db" },
-    Okinawa: { months: "Tropical. Rainy: May–Jun. Typhoons: Aug–Sep", color: "#e74c3c" }
-  },
-  Sweden: {
-    North: { months: "Snowy winters. Summer: Jun–Aug", color: "#2980b9" },
-    South: { months: "Mild winters. Rainy year-round. Best: May–Sep", color: "#27ae60" }
-  }
-};
+window.toggleMenu = toggleMenu;
+window.hideRegionPopup = hideRegionPopup;
 
 
 
