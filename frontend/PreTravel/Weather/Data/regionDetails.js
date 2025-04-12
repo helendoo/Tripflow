@@ -285,13 +285,95 @@ export const regionSeasons = {
                 months: "Rainy",
                 info: "hej",
                 color: "#9b59b6"
-            }
-        }
+            },
 
+            North:{
+              months: "Rainy",
+              info: "hej",
+              color: "#9b59b6"
+          },
+
+          Central: {
+            months: "Rainy",
+            info: "hej",
+            color: "#9b59b6"
+          }
+        },
+
+      Taiwan: {
+        South: {
+              months: "Rainy",
+              info: "hej",
+              color: "#9b59b6"
+          },
+
+        North:{
+            months: "Rainy",
+            info: "hej",
+            color: "#9b59b6"
+        },
+
+        Middle: {
+          months: "Rainy",
+          info: "hej",
+          color: "#9b59b6"
+        },
+
+        East: {
+          months: "Rainy",
+          info: "hej",
+          color: "#9b59b6"
+        }
+      },
+
+  
+
+      "South Korea": {
+        Gyeongbuk: {
+          months: "Rainy season: Jun–Jul\nCold and dry winters: Dec–Feb",
+          info: "Popular cities: Andong, Gyeongju\nExpect: Cultural heritage sites, historic temples, autumn foliage",
+          color: "#5dade2"
+        },
+        Gangwon: {
+          months: "Rainy season: Jun–Jul\nSnowy winters: Dec–Feb",
+          info: "Popular cities: Chuncheon, Sokcho\nExpect: Mountains, ski resorts, national parks",
+          color: "#58d68d"
+        },
+        Gyeonggi: {
+          months: "Rainy season: Jun–Jul\nCool season: Oct–Nov",
+          info: "Popular cities: Suwon, Incheon\nExpect: Proximity to Seoul, palaces, urban culture",
+          color: "#f9e79f"
+        },
+        Chungnam: {
+          months: "Rainy season: Jun–Jul\nBest: Sep–Nov",
+          info: "Popular cities: Daejeon, Gongju\nExpect: Historic sites, hot springs, mountain views",
+          color: "#f7dc6f"
+        },
+        Chungbuk: {
+          months: "Rainy season: Jun–Jul\nCool season: Oct–Nov",
+          info: "Popular cities: Cheongju, Danyang\nExpect: Lakes, rivers, caves, laid-back vibe",
+          color: "#f4d03f"
+        },
+        Gyeongnam: {
+          months: "Rainy season: Jun–Jul\nBest: Spring and Autumn",
+          info: "Popular cities: Busan, Changwon\nExpect: Coastal cities, beaches, seafood markets",
+          color: "#f5b041"
+        },
+        JeollaNorth: {
+          months: "Rainy season: Jun–Jul\nBest: Sep–Nov",
+          info: "Popular cities: Jeonju, Namwon\nExpect: Traditional culture, hanok villages, food tours",
+          color: "#f7c5a0"
+        },
+        JeollaSouth: {
+          months: "Rainy season: Jun–Jul\nMild winters",
+          info: "Popular cities: Gwangju, Boseong\nExpect: Tea plantations, rural beauty, less tourism",
+          color: "#ec7063"
+        }
+      }
         
 
 
-      };
+  };
 
 
 
