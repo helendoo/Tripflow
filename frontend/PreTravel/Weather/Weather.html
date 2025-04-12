@@ -8,8 +8,25 @@
 </head>
 <body>
 
-  
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav class="top-menu">
+    <ul>
+      <li><a href="#current-weather">Current Weather</a></li>
+      <li><a href="#forecast">7-Day Weather</a></li>
+      <li><a href="#region-weather">By Region Weather</a></li>
+      <li><a href="#best-time">Best Time To Go</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-banner">
+    <div class="hero-text">
+      <h1>🌍 Tripflow </h1>
+      <p>Plan smarter. Travel better.</p>
+    </div>
+  </div>
+  
+  
 
   <!-- Sidebar Menu -->
   <div id="sidebar" class="sidebar">
@@ -24,15 +41,6 @@
   <header class="lux-header">
     <h1>Weather & Seasons</h1>
   </header>
-
-  <nav class="top-menu">
-    <ul>
-      <li><a href="#current-weather">Current Weather</a></li>
-      <li><a href="#forecast">7-Day Weather</a></li>
-      <li><a href="#region-weather">By Region Weather</a></li>
-      <li><a href="#best-time">Best Time To Go</a></li>
-    </ul>
-  </nav>
   
 
   <main class="weather-container">
@@ -66,10 +74,11 @@
       <div id="region-popup" class="region-popup hidden"></div>
     </section>
     
-    <section id="best-time" class="weather-card">
+    <section class="weather-card">
       <h2>✨ Best Time to Go</h2>
-      <p>Content here...</p>
+      <div id="best-time-info"></div>
     </section>
+    
 
   </main>
 
@@ -77,6 +86,6 @@
     <p>&copy; 2025 Tripflow</p>
   </footer>
 
-  <script type="module" src="Weather.js"></script>
+  <script src="Weather.js"></script>
 </body>
 </html>
