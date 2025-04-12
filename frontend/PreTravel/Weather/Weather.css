@@ -243,13 +243,13 @@ section h2 {
 }
 
 .region-popup {
-  position: absolute;
-  top: 1325px;
-  right: 250px;
+  position: fixed;
+  top: 200px;
+  right: 80px;
   width: 400px; /* Fixed width */
   height: 300px; /* Fixed height */
   background: #1b1b2f;
-  color: #fff;
+  color: #ffffff;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
@@ -269,3 +269,148 @@ section h2 {
   transform: translateY(-20px);
   pointer-events: none;
 }
+
+/* BEST TIME TO GO SECTION */
+
+#best-time-info {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: #2c3e50;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+
+.metrics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric-tile {
+  background-color: #f0f4f8;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  flex: 1 1 250px;
+  color: #2c3e50;
+}
+
+.metric-tile:hover {
+  transform: scale(1.02);
+  cursor: default;
+}
+
+.metric-icon {
+  font-size: 1.3rem;
+  margin-right: 6px;
+}
+
+/* Expandable Highlights & Festivals */
+
+.expandable-section {
+  background-color: #1b1b2f;
+  border-left: 4px solid #fddb75;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.expandable-section h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fddb75;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.expandable-content {
+  list-style: none;
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.expandable-content li {
+  margin-bottom: 0.4rem;
+}
+
+.expandable-section.open .expandable-content {
+  max-height: 500px;
+  padding-top: 0.5rem;
+}
+
+/* 🌄 HERO BANNER */
+
+.hero-banner {
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-text {
+  background: rgba(255, 255, 255, 0.75);
+  color: #2c3e50;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  backdrop-filter: blur(3px);
+}
+
+.hero-text h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.weather-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 2rem;
+  margin: 2.5rem auto;
+  max-width: 1000px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  color: #2c3e50;
+  transition: transform 0.3s ease;
+}
+
+
+.weather-card:hover {
+  transform: translateY(-4px);
+}
+
+
+#weather-result p {
+  color: #2c3e50;  /* or your preferred dark text */
+}
+
+.weather-card p, .weather-card li {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.weather-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

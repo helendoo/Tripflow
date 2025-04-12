@@ -182,6 +182,7 @@ function displayRegionWeather(country) {
 function loadCountryMap(country) {
   const mapPath = `Maps/${country}.svg`;
   const mapContainer = document.getElementById("region-map");
+  console.log("Trying to load", mapPath)
 
   if (!mapContainer) return;
 
@@ -281,3 +282,5 @@ document.addEventListener("scroll", () => {
     }
   });
 });
+
+window.toggleSection = toggleSection;
