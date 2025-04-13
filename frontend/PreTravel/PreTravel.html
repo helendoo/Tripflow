@@ -7,11 +7,14 @@
   <link rel="stylesheet" href="PreTravel.css" />
 </head>
 <body>
-  <header>
-    <h1>Pre-Travel Checker</h1>
-    <p>Get visa, safety, and regulation info before you go</p>
-  </header>
 
+  <section class="hero-banner">
+    <div class="hero-text">
+      <h1>Pre-Travel Checker</h1>
+      <p>Plan smarter with safety, visa & health info for your destination</p>
+    </div>
+  </section>
+  
   <main>
     <section class="search-box">
       <!-- FROM input -->
@@ -20,6 +23,12 @@
         <input type="text" id="from" placeholder="e.g. Sweden" autocomplete="off" />
         <div id="autocomplete-from" class="autocomplete-items"></div>
       </div>
+
+      <section class="info-highlight" style="text-align:center; margin-top: 3rem;">
+        <h2 style="color:#1A1A40;">Why Use This Tool?</h2>
+        <p style="max-width:600px;margin:auto;color:#444;">Easily check travel restrictions, vaccine requirements, or safety laws across 190+ countries. Tripflow simplifies the planning so you can focus on the journey.</p>
+      </section>
+      
 
       <!-- TO input -->
       <div class="form-item autocomplete">
@@ -40,6 +49,7 @@
           <label><input type="radio" name="info-type" value="essentials" /> Essentials</label>
         </div>
       </div>
+
 
       <!-- SEARCH BUTTON -->
       <div class="form-item">

@@ -247,7 +247,7 @@ function displayBestTime(city) {
   box.innerHTML = `
   <div class="metrics-row">
     <div class="metric-tile">
-      <span class="metric-icon">💰</span>
+      <span class="metric-icon">✔️</span>
       <strong>Affordability:</strong><br>${info.affordability}
     </div>
     <div class="metric-tile">
@@ -257,16 +257,16 @@ function displayBestTime(city) {
   </div>
 
   <div class="expandable-section" onclick="toggleSection(this)">
-    <h4><span>🧭</span> Experience Highlights</h4>
+    <h4><span>☀</span> Experience Highlights</h4>
     <ul class="expandable-content">
-      ${info.experiences.map(e => `<li>✨ ${e}</li>`).join("")}
+      ${info.experiences.map(e => `<li> ${e}</li>`).join("")}
     </ul>
   </div>
 
   <div class="expandable-section" onclick="toggleSection(this)">
-    <h4><span>🎉</span> Festival Events</h4>
+    <h4><span>☀</span> Festival Events</h4>
     <ul class="expandable-content">
-    ${(countryFestivalData[country] || []).map(f => `<li>🎭 ${f}</li>`).join("")}
+    ${(countryFestivalData[country] || []).map(f => `<li> ${f}</li>`).join("")}
     </ul>
   </div>
 `;

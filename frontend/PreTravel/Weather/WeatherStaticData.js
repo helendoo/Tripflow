@@ -154,75 +154,75 @@ const seasonalRegions = {
 
   const countryFestivalData = {
     Thailand: [
-      "Songkran (Thai New Year): April 🌊",
-      "Loy Krathong (Lantern Festival): November 🏮",
-      "Vegetarian Festival: October 🍜",
-      "Full Moon Party (Koh Phangan): Monthly during full moon 🌕🎉"
+      "Songkran (Thai New Year): April ",
+      "Loy Krathong (Lantern Festival): November ",
+      "Vegetarian Festival: October ",
+      "Full Moon Party (Koh Phangan): Monthly during full moon "
     ],
     Japan: [
-      "Sakura (Cherry Blossom) Viewing: Late March–Early April 🌸",
-      "Gion Matsuri (Kyoto): July 🎎",
-      "Tanabata Star Festival: July 7 ⭐"
+      "Sakura (Cherry Blossom) Viewing: Late March–Early April ",
+      "Gion Matsuri (Kyoto): July ",
+      "Tanabata Star Festival: July 7 "
     ],
     Italy: [
-      "Venice Carnival: February 🎭",
+      "Venice Carnival: February ",
       "Festa della Repubblica: June 2 🇮🇹",
-      "Grape Harvest Festivals: September 🍇"
+      "Grape Harvest Festivals: September "
     ],
     Sweden: [
-      "Midsummer Festival: Late June 🌼",
-      "Crayfish Parties: August 🦞",
-      "Saint Lucia Day: December 13 🔥"
+      "Midsummer Festival: Late June ",
+      "Crayfish Parties: August ",
+      "Saint Lucia Day: December 13 "
     ],
     France: [
       "Bastille Day: July 14 🇫🇷",
-      "Fête de la Musique: June 21 🎶",
-      "Christmas Markets (Alsace, Paris): Dec 🎄"
+      "Fête de la Musique: June 21 ",
+      "Christmas Markets (Alsace, Paris): Dec "
     ],
     USA: [
       "4th of July: Independence Day 🇺🇸",
-      "Thanksgiving Parades: November 🦃",
-      "New Year's in Times Square: Dec 31 🎉"
+      "Thanksgiving: November ",
+      "New Year's in Times Square: Dec 31 "
     ],
     UK: [
-      "Notting Hill Carnival: August 🎭",
+      "Notting Hill Carnival: August ",
       "Trooping the Colour: June 🇬🇧",
-      "Bonfire Night (Guy Fawkes): Nov 5 🔥"
+      "Bonfire Night (Guy Fawkes): Nov 5 "
     ],
     Australia: [
-      "Sydney New Year’s Fireworks: Dec 31 🎆",
-      "Vivid Sydney (light festival): May–June 🌈",
+      "Sydney New Year’s Fireworks: Dec 31 ",
+      "Vivid Sydney (light festival): May–June ",
       "Australia Day: January 26 🇦🇺"
     ],
     Spain: [
-      "La Tomatina: August 🍅",
-      "Semana Santa (Holy Week): March–April ✝️",
-      "Las Fallas Festival: March 🔥"
+      "La Tomatina: August ",
+      "Semana Santa (Holy Week): March–April ",
+      "Las Fallas Festival: March "
     ],
     Germany: [
-      "Oktoberfest (Munich): Sept–Oct 🍻",
-      "Berlin Film Festival: February 🎬",
-      "Christmas Markets: Dec 🎄"
+      "Oktoberfest (Munich): Sept–Oct ",
+      "Berlin Film Festival: February ",
+      "Christmas Markets: Dec "
     ],
     Brazil: [
-      "Rio Carnival: February–March 🎉",
-      "São João Festival: June 💃",
-      "New Year’s on Copacabana Beach: Dec 31 🎆"
+      "Rio Carnival: February–March ",
+      "São João Festival: June ",
+      "New Year’s on Copacabana Beach: Dec 31 "
     ],
     China: [
-      "Chinese New Year: Jan–Feb 🐉",
-      "Mid-Autumn Festival: Sept–Oct 🌕",
+      "Chinese New Year: Jan–Feb ",
+      "Mid-Autumn Festival: Sept–Oct ",
       "National Day: October 1 🇨🇳"
     ],
     Mexico: [
-      "Day of the Dead: Nov 1–2 💀🌺",
+      "Day of the Dead: Nov 1–2 ",
       "Independence Day: Sept 16 🇲🇽",
-      "Guelaguetza Festival: July (Oaxaca) 🕺"
+      "Guelaguetza Festival: July (Oaxaca) "
     ],
     UAE: [
-      "Dubai Shopping Festival: Jan–Feb 🛍️",
+      "Dubai Shopping Festival: Jan–Feb ",
       "National Day: Dec 2 🇦🇪",
-      "Eid al-Fitr & Eid al-Adha: Variable 🕌"
+      "Eid al-Fitr & Eid al-Adha: Variable "
     ]
   };
   
