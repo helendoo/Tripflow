@@ -203,7 +203,6 @@ section h2 {
   transform: translateX(-230px);
 }
 
-
 #region-map svg {
   width: 100%;
   height: auto;
@@ -243,9 +242,9 @@ section h2 {
 }
 
 .region-popup {
-  position: absolute;
-  top: 1325px;
-  right: 250px;
+  position: fixed;
+  top: 200px;
+  right: 80px;
   width: 400px; /* Fixed width */
   height: 300px; /* Fixed height */
   background: #1b1b2f;

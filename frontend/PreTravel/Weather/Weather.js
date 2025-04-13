@@ -1,4 +1,4 @@
-import { regionSeasons } from "./Data/regionDetails.js";
+import { regionSeasons } from './Data/regionDetails.js';
 
 function toggleMenu() {
   const menu = document.getElementById("sidebar");
@@ -182,6 +182,8 @@ function displayRegionWeather(country) {
 function loadCountryMap(country) {
   const mapPath = `Maps/${country}.svg`;
   const mapContainer = document.getElementById("region-map");
+
+  console.log("Trying to load:", mapPath);
 
   if (!mapContainer) return;
 
