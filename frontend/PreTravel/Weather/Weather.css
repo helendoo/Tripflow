@@ -242,20 +242,20 @@ section h2 {
 }
 
 .region-popup {
-  position: fixed;
-  top: 200px;
-  right: 80px;
-  width: 400px; /* Fixed width */
-  height: 300px; /* Fixed height */
-  background: #1b1b2f;
-  color: #ffffff;
+  position: absolute; /* or fixed */
+  top: 20%;
+  right: 8%;
+  width: 360px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #ffffff;
+  color: white;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  overflow-y: auto; /* Scroll inside if needed */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 2; /* Lower than fixed headers/menus */
+  z-index: 1002;
 }
+
 
 .region-popup.visible {
   transform: translateY(0);
@@ -405,7 +405,7 @@ section h2 {
 .weather-card p, .weather-card li {
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #ffffff;
+  color: #000000;
 }
 
 .weather-card.visible {
