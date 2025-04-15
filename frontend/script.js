@@ -129,5 +129,65 @@ function toggleDropdown() {
         alert("Invalid info type selected.");
     }
   }
+
+
+
+  /* TRAVEL INSPO */
+
+
+  const cardWidth = 280;
+
+  function setupCarouselLoop() {
+    const carousel = document.getElementById("carousel");
+    const cards = Array.from(carousel.children);
   
+    // Clone first and last few cards
+    cards.slice(0, 3).forEach(card => {
+      carousel.appendChild(card.cloneNode(true));
+    });
+  
+    cards.slice(-3).forEach(card => {
+      carousel.insertBefore(card.cloneNode(true), carousel.firstChild);
+    });
+  
+    // ✅ Restore scroll if saved
+    const savedScroll = localStorage.getItem("carouselScroll");
+    if (savedScroll !== null) {
+      carousel.scrollLeft = parseInt(savedScroll, 10);
+      localStorage.removeItem("carouselScroll");
+    } else {
+      // Start at the real beginning
+      carousel.scrollLeft = cardWidth * 3;
+    }
+  }
+  
+  function scrollCarousel(direction) {
+    const carousel = document.getElementById("carousel");
+    const scrollLeft = carousel.scrollLeft;
+    const totalWidth = carousel.scrollWidth;
+    const visibleWidth = carousel.offsetWidth;
+  
+    const maxScroll = totalWidth - visibleWidth;
+    const scrollAmount = cardWidth;
+  
+    // Handle edge cases BEFORE scroll
+    if (direction > 0 && scrollLeft >= totalWidth - visibleWidth - cardWidth * 4) {
+      carousel.scrollLeft = cardWidth * 3;
+    } else if (direction < 0 && scrollLeft <= cardWidth * 2) {
+      carousel.scrollLeft = totalWidth - visibleWidth - cardWidth * 3;
+    }
+  
+    carousel.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+  }
+  
+  // ✅ Save scroll position when any card is clicked
+  document.getElementById("carousel").addEventListener("click", (e) => {
+    const card = e.target.closest('.card-link'); // or .blog-card if you don’t use <a>
+    if (card) {
+      const carousel = document.getElementById("carousel");
+      localStorage.setItem("carouselScroll", carousel.scrollLeft);
+    }
+  });
+  
+  document.addEventListener("DOMContentLoaded", setupCarouselLoop);
   
