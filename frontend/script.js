@@ -111,18 +111,8 @@ function toggleDropdown() {
       case 'health':
       case 'safety':
       case 'essentials':
-        fetch(`http://127.0.0.1:5000/api/info${query}`)
-          .then(response => {
-            if (!response.ok) throw new Error("Failed to fetch info.");
-            return response.json();
-          })
-          .then(data => {
-            document.getElementById("result").innerText = data.message || "No info found.";
-          })
-          .catch(error => {
-            console.error("Error:", error);
-            alert("Error connecting to backend.");
-          });
+        localStorage.setItem("selectedDestination", destination);
+        window.location.href = 'Essentials/essentials.html';
         break;
   
       default:
