@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visa & Travel Info | TripFlow</title>
+  <link rel="stylesheet" href="VisaTravel.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-text">
+      <h1>Visa & Travel Info</h1>
+      <p>Your essential travel entry requirements — simplified and updated.</p>
+    </div>
+  </section>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div id="sidebar" class="sidebar">
+  <a href="../../index.html">Homepage</a>
+  <a href="../PreTravel.html">Pre-Travel</a>
+  <a href="../PreTravel.html" onclick="navigateTo('visa')">Visa & Travel Info</a>
+  <a href="../PreTravel.html" onclick="navigateTo('health')">Health & Vaccines</a>
+  <a href="../PreTravel.html" onclick="navigateTo('safety')">Safety & Laws</a>
+  <a href="../PreTravel.html" onclick="navigateTo('essentials')">Essentials</a>
+</div>
+
+  <!-- Main Content -->
+  <main>
+    <div id="visa-info" class="visa-info-container">
+      <!-- Visa cards will be injected here by VisaTravel.js -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 TripFlow. All rights reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script type="module" src="VisaTravel.js"></script>
+  <script type="module" src="VisaData.js"></script>
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open");
+      document.body.classList.toggle("sidebar-open");
+    }
+  </script>
+  
+</body>
+</html>
