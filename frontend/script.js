@@ -110,6 +110,9 @@ function toggleDropdown() {
       case 'visa':
       case 'health':
       case 'safety':
+        localStorage.setItem("selectedDestination", destination);
+        window.location.href = 'SafetyLaws/safety.html';
+        break;
       case 'essentials':
         localStorage.setItem("selectedDestination", destination);
         window.location.href = 'Essentials/essentials.html';
