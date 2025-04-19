@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const country = localStorage.getItem("selectedDestination") || "Thailand";
   const origin = localStorage.getItem("selectedFrom") || "SE";
   renderStaticVisaInfo(country);
-  fetchLiveVisaData(origin, getCountryCode(country)); // Use ISO2 code from destination name
+  fetchVisaRequirement(origin);
+  fetchCountryGeneralInfo(country);
 });
 
 // --- STATIC DATA ---
@@ -27,36 +28,48 @@ function renderStaticVisaInfo(country) {
         </div>
       </div>
     `).join("")}
-
-    <div id="live-visa-data" class="live-visa-box">
-      <p>🔄 Fetching up-to-date visa info...</p>
-    </div>
   `;
 }
 
-// --- LIVE API FETCH ---
-async function fetchLiveVisaData(from, to) {
-  const liveBox = document.getElementById("live-visa-data");
-  if (!from || !to || !liveBox) return;
+async function fetchVisaRequirement(countryCode = "SE") {
+  const visaBox = document.getElementById("live-visa-api-info");
 
   try {
-    const response = await fetch(`https://rough-sun-2523.fly.dev/visa/${from}/${to}`);
-    if (!response.ok) throw new Error("Could not fetch live visa info");
+    const response = await fetch("https://visa-requirement.p.rapidapi.com/map", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-RapidAPI-Key": "3544f404e6mshc4088a0deed8e69p136a52jsne3b1a0ea71fa",
+        "X-RapidAPI-Host": "visa-requirement.p.rapidapi.com"
+      },
+      body: new URLSearchParams({
+        passport: countryCode
+      })
+    });
 
     const data = await response.json();
-    liveBox.innerHTML = `
-      <h3>🌐 Live Visa Info (${from} ➜ ${to})</h3>
+
+    if (!data || !Array.isArray(data.visa)) {
+      visaBox.innerHTML = "❌ No data returned.";
+      return;
+    }
+
+    visaBox.innerHTML = `
       <div class="visa-card open">
-        <h4>Status: ${data.requirement}</h4>
-        <p><strong>Type:</strong> ${data.subtext || "N/A"}</p>
-        <p><strong>Note:</strong> ${data.note || "No additional info."}</p>
+        <h3>🌍 Visa Info Based on Passport: ${countryCode}</h3>
+        <div class="visa-content">
+          ${data.visa.slice(0, 10).map(entry => `
+            <p><strong>${entry.country}</strong>: ${entry.visa || "No info"}</p>
+          `).join("")}
+        </div>
       </div>
     `;
-  } catch (err) {
-    liveBox.innerHTML = `<p>⚠️ Could not fetch live visa info. Try again later.</p>`;
-    console.error(err);
+  } catch (error) {
+    console.error("Visa API error:", error);
+    visaBox.innerHTML = "⚠️ Could not load visa info.";
   }
 }
+
 
 // --- ISO Country Code Helper ---
 function getCountryCode(name) {
@@ -74,4 +87,31 @@ function getCountryCode(name) {
     // 🔄 Add more as needed
   };
   return map[name] || "TH"; // fallback to Thailand
+}
+
+async function fetchCountryGeneralInfo(countryName) {
+  const countryBox = document.getElementById("country-info");
+  if (!countryBox) return;
+
+  try {
+    const res = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}?fullText=true`);
+    const [data] = await res.json();
+
+    countryBox.innerHTML = `
+  <div class="info-toggle open" onclick="this.classList.toggle('open')">
+    <h3>🌍 General Info About ${data.name.common}</h3>
+    <div class="visa-content">
+      <p><strong>Capital:</strong> ${data.capital?.[0] || "N/A"}</p>
+      <p><strong>Region:</strong> ${data.region}</p>
+      <p><strong>Population:</strong> ${data.population.toLocaleString()}</p>
+      <p><strong>Currency:</strong> ${Object.values(data.currencies || {})[0]?.name || "N/A"} (${Object.values(data.currencies || {})[0]?.symbol || ""})</p>
+      <p><strong>Languages:</strong> ${Object.values(data.languages || {}).join(", ")}</p>
+    </div>
+  </div>
+`;
+
+  } catch (err) {
+    console.error("Country info error:", err);
+    countryBox.innerHTML = `<p>⚠️ Could not load country details.</p>`;
+  }
 }
