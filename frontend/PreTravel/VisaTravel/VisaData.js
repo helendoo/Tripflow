@@ -1,4 +1,4 @@
-// VisaData.js
+// VisaData.js static data as backup
 
 export const visaRequirements = {
     Thailand: [
@@ -34,3 +34,5 @@ export const visaRequirements = {
     // Add more countries as needed...
   };
   
+
+

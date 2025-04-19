@@ -108,6 +108,9 @@ function toggleDropdown() {
         break;
   
       case 'visa':
+        localStorage.setItem("selectedDestination", destination);
+        window.location.href = 'VisaTravel/VisaTravel.html';
+        break;
       case 'health':
       case 'safety':
         localStorage.setItem("selectedDestination", destination);

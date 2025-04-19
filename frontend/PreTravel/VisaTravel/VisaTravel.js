@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const country = localStorage.getItem("selectedDestination") || "Thailand";
   const origin = localStorage.getItem("selectedFrom") || "SE";
   renderStaticVisaInfo(country);
-  fetchVisaRequirement(origin);
+  fetchVisaRequirement(origin, destinationCode);
   fetchCountryGeneralInfo(country);
 });
 
@@ -31,44 +31,40 @@ function renderStaticVisaInfo(country) {
   `;
 }
 
-async function fetchVisaRequirement(countryCode = "SE") {
+async function fetchVisaRequirement(originCode = "SE", destinationCode = "TH") {
   const visaBox = document.getElementById("live-visa-api-info");
 
   try {
-    const response = await fetch("https://visa-requirement.p.rapidapi.com/map", {
+    const response = await fetch("https://visa-requirement.p.rapidapi.com/visa", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": "3544f404e6mshc4088a0deed8e69p136a52jsne3b1a0ea71fa",
+        "X-RapidAPI-Key": "YOUR_API_KEY",
         "X-RapidAPI-Host": "visa-requirement.p.rapidapi.com"
       },
       body: new URLSearchParams({
-        passport: countryCode
+        passport: originCode,
+        destination: destinationCode
       })
     });
 
     const data = await response.json();
 
-    if (!data || !Array.isArray(data.visa)) {
-      visaBox.innerHTML = "❌ No data returned.";
-      return;
-    }
-
     visaBox.innerHTML = `
-      <div class="visa-card open">
-        <h3>🌍 Visa Info Based on Passport: ${countryCode}</h3>
-        <div class="visa-content">
-          ${data.visa.slice(0, 10).map(entry => `
-            <p><strong>${entry.country}</strong>: ${entry.visa || "No info"}</p>
-          `).join("")}
-        </div>
+    <div class="visa-card open">
+      <h3>🌍 Visa Requirement: ${getCountryName(originCode)} → ${getCountryName(destinationCode)}</h3>
+      <div class="visa-content">
+        <p>${data.visa || "No information available."}</p>
       </div>
-    `;
+    </div>
+  `;
+  
   } catch (error) {
     console.error("Visa API error:", error);
     visaBox.innerHTML = "⚠️ Could not load visa info.";
   }
 }
+
 
 
 // --- ISO Country Code Helper ---
@@ -84,10 +80,26 @@ function getCountryCode(name) {
     "Japan": "JP",
     "India": "IN",
     "Brazil": "BR",
-    // 🔄 Add more as needed
+    "Canada": "CA",
+    "Mexico": "MX",
+    "China": "CN",
+    "Australia": "AU",
+    "New Zealand": "NZ",
+    "South Korea": "KR",
+    "Norway": "NO",
+    "Denmark": "DK",
+    "Finland": "FI",
+    "Netherlands": "NL",
+    "South Africa": "ZA",
+    "Argentina": "AR",
+    "Malaysia": "MY",
+    "Singapore": "SG",
+    "Indonesia": "ID",
+    "Philippines": "PH"
   };
-  return map[name] || "TH"; // fallback to Thailand
+  return map[name] || "TH"; // fallback
 }
+
 
 async function fetchCountryGeneralInfo(countryName) {
   const countryBox = document.getElementById("country-info");
