@@ -3,10 +3,15 @@ import { visaRequirements } from './VisaData.js';
 document.addEventListener("DOMContentLoaded", () => {
   const country = localStorage.getItem("selectedDestination") || "Thailand";
   const origin = localStorage.getItem("selectedFrom") || "SE";
+  const destinationCode = getCountryCode(country); // ✅ THIS LINE FIXES IT
+
+  console.log(`Fetching visa info from ${origin} to ${destinationCode}`); // optional for debugging
+
   renderStaticVisaInfo(country);
-  fetchVisaRequirement(origin, destinationCode);
+  
   fetchCountryGeneralInfo(country);
 });
+
 
 // --- STATIC DATA ---
 function renderStaticVisaInfo(country) {
@@ -39,7 +44,7 @@ async function fetchVisaRequirement(originCode = "SE", destinationCode = "TH") {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": "YOUR_API_KEY",
+        "X-RapidAPI-Key": "3544f404e6mshc4088a0deed8e69p136a52jsne3b1a0ea71fa",
         "X-RapidAPI-Host": "visa-requirement.p.rapidapi.com"
       },
       body: new URLSearchParams({
@@ -100,6 +105,25 @@ function getCountryCode(name) {
   return map[name] || "TH"; // fallback
 }
 
+
+
+function saveAndReload() {
+  const origin = document.getElementById("origin-input").value.trim();
+  const destination = document.getElementById("destination-input").value.trim();
+
+  if (!origin || !destination) {
+    alert("Please enter both countries.");
+    return;
+  }
+
+  localStorage.setItem("selectedFrom", capitalize(origin));
+  localStorage.setItem("selectedDestination", capitalize(destination));
+  location.reload();
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
 
 async function fetchCountryGeneralInfo(countryName) {
   const countryBox = document.getElementById("country-info");
