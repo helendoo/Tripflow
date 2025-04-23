@@ -1,0 +1,192 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafd;
+    margin: 0;
+    padding: 0;
+    color: #1a1a1a;
+  }
+
+
+  .header-hero {
+    background: linear-gradient(to bottom right, #e6f0ff, #f8fbff);
+    padding: 60px 20px 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-overlay {
+    max-width: 900px;
+  }
+  
+  .tripflow-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #1a1a40;
+    margin: 0;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 10px;
+  }
+  
+  
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  #country-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #1a1a40;
+    margin-bottom: 2rem;
+  }
+  
+  .section {
+    background: #eef6fc;
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .section h3 {
+    color: #003366;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .section ul {
+    padding-left: 1.2rem;
+  }
+  
+  .section li {
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+  }
+ 
+
+  /* HOW THE SECTION LOOKS LIKE */
+
+  .accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .accordion {
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #f0f7ff, #f9fbff);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .accordion summary {
+    font-weight: 600;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #eaf3ff;
+    border-bottom: 1px solid #dbe9ff;
+    transition: background-color 0.3s;
+
+  }
+  
+  .accordion summary:hover {
+    background-color: #dceeff;
+  }
+  
+  .accordion[open] summary {
+    background-color: #d0eaff;
+    font-weight: 700;
+  }
+  
+  .accordion summary::marker {
+    display: none;
+  }
+  
+  .accordion p,
+.accordion li {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.accordion ul {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+  
+  .accordion a {
+    color: #1a73e8;
+    text-decoration: underline;
+  }
+  
+  .accordion a:hover {
+    text-decoration: none;
+  }
+
+  .accordion .section {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
+  
+
+ /* SIDEBAR */
+
+ .menu-toggle {
+    font-size: 2rem;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 8px;
+    color: gold;
+    z-index: 1101;
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 80px 20px 20px 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1100;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: #3498db;
+    text-decoration: none;
+    margin: 20px 0;
+    font-size: 1.1rem;
+  }
+  
+  .sidebar a:hover {
+    color: #2980b9;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  body.sidebar-open .sidebar {
+    left: 0;
+  }

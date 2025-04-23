@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f9fbfc;
+    color: #1a1a40;
+  }
+  
+  .trip-header {
+    text-align: center;
+    background: linear-gradient(to right, #e0f2ff, #f5fcff);
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .trip-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .trip-header p {
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .book-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .booking-tips {
+    margin-top: 3rem;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  .booking-tips h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+  }
+  
+  .booking-tips ul {
+    padding-left: 1.5rem;
+    line-height: 1.6;
+  }
+
+  
+  
+
+
+  .flight-search-box {
+    background: #f5fbff;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: 2rem auto;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+  
+  .flight-search-box h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .flight-search-box form input,
+  .flight-search-box form button {
+    padding: 0.7rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .flight-search-box form button {
+    background-color: #004e7c;
+    color: white;
+    cursor: pointer;
+  }
+  

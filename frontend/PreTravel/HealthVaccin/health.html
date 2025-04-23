@@ -3,41 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Safety & Laws | Tripflow</title>
-  <link rel="stylesheet" href="safety.css" />
+  <title>Health & Vaccination | Tripflow</title>
+  <link rel="stylesheet" href="health.css" />
     <!-- Hide from search engines while in development -->
   <meta name="robots" content="noindex, nofollow" />
 </head>
 <body>
-
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <div id="sidebar" class="sidebar">
     <a href="../../index.html">Homepage</a>
     <a href="../PreTravel.html">Pre-Travel Home</a>
     <a href="../PreTravel.html" onclick="navigateTo('visa')">Visa & Travel Info</a>
     <a href="../PreTravel.html" onclick="navigateTo('health')">Health & Vaccines</a>
-    <a href="../Essentials/essentials.html" onclick="navigateTo('Essentials')">Essentials</a>
     <a href="../Weather/Weather.html" onclick="navigateTo('weather')">Weather & Seasons</a>
   </div>
 
   <header class="header-hero">
     <div class="hero-overlay">
-      <div class="badge">🌍 TRUSTED TRAVEL RESOURCE</div>
-      <h1 class="tripflow-title">Tripflow</h1>
-      <p class="subtitle">Stay safe. Travel informed.</p>
+      <h1 class="tripflow-title">TripFlow</h1>
+      <p class="subtitle">Stay healthy. Travel smart.</p>
     </div>
   </header>
 
   <main class="container">
-    <h2 id="country-heading">Safety & Laws</h2>
-    <div id="safetyAccordion" class="accordion-container"></div>
-    </div>
+    <h2 id="country-title">Health & Vaccination Info</h2>
+    <div id="health-content"></div>
   </main>
 
   <footer>
     &copy; 2025 Tripflow. All rights reserved.
   </footer>
 
-  <script src="safety.js" type="module"></script>
+  <script type="module" src="health.js"></script>
 </body>
 </html>
