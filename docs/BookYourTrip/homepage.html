@@ -4,42 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Book My Trip | Tripflow</title>
-  <link rel="stylesheet" href="book.css" />
-  <!-- Doesnt Show when deployed -->
+  <link rel="stylesheet" href="homepage.css" />
   <meta name="robots" content="noindex, nofollow" />
 </head>
-
 <body>
 
   <header class="trip-header">
-    <h1>Book Your Flight</h1>
-    <p>Search and compare flights easily with Tripflow</p>
+    <h1>Book Your Trip</h1>
+    <p>Compare & book flights globally with Tripflow</p>
   </header>
 
   <main class="book-container">
 
-
-    <div class="flight-search-box">
-        <h2>✈️ Find the Best Flights</h2>
-        <form id="flightForm">
-          <input type="text" id="origin" placeholder="From (e.g. Stockholm)" required>
-          <input type="text" id="destination" placeholder="To (e.g. Bangkok)" required>
-          <input type="date" id="departDate" required>
-          <input type="date" id="returnDate">
-          <button type="submit">Search Flights</button>
-        </form>
+    <div class="tripflow-search">
+      <div class="tab-buttons">
+        <button class="active">Flyg</button>
+        <button>Hotell</button>
+        <button>Flygplatstransfer</button>
       </div>
 
+    <section class="flight-search-box">
+      <h2>✈️ Find Your Perfect Flight</h2>
+      <form id="flightForm">
+        <input type="text" id="origin" list="origin-list" placeholder="From (e.g. ARN or Stockholm)" required />
+        <datalist id="origin-list"></datalist>
 
+        <input type="text" id="destination" list="destination-list" placeholder="To (e.g. BKK or Bangkok)" required />
+        <datalist id="destination-list"></datalist>
 
-    <!-- TIPS SECTION -->
+        <input type="date" id="departDate" required>
+        <input type="date" id="returnDate">
+        <select id="passengers">
+          <option value="1">1 adult</option>
+          <option value="2">2 adults</option>
+          <option value="3">3 adults</option>
+        </select>
+        <button type="submit">Search Flights</button>
+      </form>
+    </section>
+
     <section class="booking-tips">
-      <h2>Smart Booking Tips ✈️</h2>
+      <h2>💡 Smart Booking Tips</h2>
       <ul>
-        <li>Book on Tuesdays or Wednesdays for better deals.</li>
-        <li>Compare nearby airports — you may save hundreds!</li>
-        <li>Early morning or late-night flights are usually cheaper.</li>
-        <li>Use flexible dates for the lowest fares.</li>
+        <li>Compare nearby airports to find better prices.</li>
+        <li>Try flexible dates to unlock hidden savings.</li>
+        <li>Tuesday mornings often have the cheapest fares.</li>
+        <li>Red-eye flights are usually more affordable.</li>
       </ul>
     </section>
 
@@ -49,6 +59,6 @@
     &copy; 2025 Tripflow. All rights reserved.
   </footer>
 
+  <script src="homepage.js"></script>
 </body>
-<script src="homepage.js" type="module"></script>
 </html>
